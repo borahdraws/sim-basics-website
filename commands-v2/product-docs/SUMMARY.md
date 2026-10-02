@@ -5,11 +5,15 @@
 ## AdvantageKit Sim Setup
 
 * [Getting Started with 2026 AdvantageKit Sim](advantagekit-sim-setup/getting-started-with-2026-advantagekit-sim.md)
-* [Quickstart](advantagekit-sim-setup/quickstart.md)
-* [Your first project](advantagekit-sim-setup/your-first-project.md)
+
+## Make an Intake Subsystem
+
+* [How does AdvantageKit work?](make-an-intake-subsystem/how-does-advantagekit-work.md)
 
 ## Core concepts
 
+* [Your first project](core-concepts/your-first-project.md)
+* [Quickstart](core-concepts/quickstart.md)
 * [Core concepts](core-concepts/core-concepts.md)
 * [Workspaces and projects](core-concepts/workspaces-and-projects.md)
 * [Permissions](core-concepts/permissions.md)
