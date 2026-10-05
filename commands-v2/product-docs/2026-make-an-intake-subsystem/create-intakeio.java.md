@@ -571,9 +571,8 @@ When we write our method `setIntakeVoltage` in IntakeIOTalonFX, our method `setI
 {% endstep %}
 {% endstepper %}
 
+</details>
+
 ## Congrats!
 
 That was a lot of information, but we have finally set up our IntakeIO. Lot of work to try to get something to move by pressing a button. Most of us don't have access to a robot to test our code. In the upcoming lessons we will use our IntakeIO interface to create a virtual intake subsystem.
-
-</details>
-
