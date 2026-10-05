@@ -146,6 +146,6 @@ Now that you have a working project, you can check out:
 [automations.md](../guides/automations.md)
 {% endcontent-ref %}
 
-{% content-ref url="../core-concepts/permissions.md" %}
-[permissions.md](../core-concepts/permissions.md)
+{% content-ref url="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc" %}
+[Broken link](/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc)
 {% endcontent-ref %}

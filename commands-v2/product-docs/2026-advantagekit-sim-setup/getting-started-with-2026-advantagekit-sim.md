@@ -15,7 +15,7 @@ icon: computer-mouse
 Since all game controllers are different, make sure you have the controller drivers installed if necessary. If you don't have a game controller you can use your computer's keyboard to control the simulation, but a game controller is better especially for swerve drive.
 {% endhint %}
 
-## Download and install WPILib
+## 1. Download and install WPILib
 
 Go to the [wpilib.org](http://wpilib.org) website and select Install.&#x20;
 
@@ -49,7 +49,7 @@ Choose Download for this computer only.
 
 WPILib Installation finished!
 
-## Download AdvantageKit template
+## 2. Download AdvantageKit template
 
 AdvantageKit is a special template to organize code designed by developed by Team 6328. AdvantageKit will help us do many useful things.
 
@@ -69,7 +69,7 @@ The latest release version will be at the top of the page. Under Assets we want 
 
 Extract the file and it is ready to open in the next step.
 
-## Intro to Visual Studio Code aka VS Code
+## 3. Intro to Visual Studio Code aka VS Code
 
 Open WPILib VS Code from your start menu. The icon is the WPILib logo symbol:
 
@@ -115,7 +115,7 @@ VS Code prompts "Enable Desktop Support for Project?" We want Desktop Support to
 
 ![](<../.gitbook/assets/unknown (15).png>)
 
-### (optional) having git issues
+### 3.1 (optional) having git issues
 
 I remember there was some issue related to Git when I first tried and failed to build my robot code. I had to download and install Git Bash (look up Git for Windows).&#x20;
 
@@ -135,7 +135,7 @@ git add .
 git commit -m "Initial commit"
 ```
 
-## Driving the robot in AdvantageScope
+## 4. Driving the robot in AdvantageScope
 
 Plug in your game controller. It is helpful to make sure the game controller works first by opening an online gamepad tester. Search online and you'll find several websites where you can test to make sure you are getting controller input.
 

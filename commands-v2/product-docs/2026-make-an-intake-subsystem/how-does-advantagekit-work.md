@@ -1,5 +1,6 @@
 ---
 description: Start with understanding how AdvantageKit robot code is structured and why
+icon: umbrella
 ---
 
 # How does AdvantageKit work?
@@ -8,8 +9,6 @@ description: Start with understanding how AdvantageKit robot code is structured 
 
 * [ ] A computer that you can download things onto
 * [x] Internet connection
-* [ ] A game controller, ideally the one the driver will use for competitions
-* [ ] The previously downloaded AdvantageKit\_TalonFXSwerveTemplate robot code
 
 ## Download the AdvantageKit\_KitBot2026Template robot code
 
@@ -39,7 +38,7 @@ If you look at the big left column of VS Code (called the Side Bar), you will se
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-Technically you could write everything in a single file of code but that would be very difficult to scroll through to figure out what's in there, what's missing, what's working, what's not working and why.
+Technically you could try to write everything in a single file of code but that would be very difficult to scroll through to figure out what's in there, what's missing, what's working, what's not working and why.
 
 Under AdvantageKit\_KitBot2026Template, open src >> main >> java >> frc >> robot >> subsystems.
 
@@ -61,18 +60,18 @@ Look inside both the drive and superstructure folders. Both subsystems have at l
 
 {% stepper %}
 {% step %}
-Start with SubsystemIO.java for two things:
+Start with SubsystemIO.java so that we get two things:
 
 1. Output: Make sure the SIM robot and REAL robot have the same hardware structure.
 2. Input: Make sure we can record what the subsystem hardware is doing.
 {% endstep %}
 
 {% step %}
-Make SubsystemIOSim.java to create a virtual version of the hardware. Now when we create Subsystem.java, we can see exactly what our code does without a real robot.
+Make a SubsystemIOSim.java that implements SubsystemIO. SubsystemIOSim creates a virtual version of the hardware. Now while creating Subsystem.java, we can see exactly what our code does without a real robot.
 {% endstep %}
 
 {% step %}
-Make Subsystem.java to tell the hardware what to do, regardless of whether it is SIM or REAL (What should the motors do when we say "start"? What should the motors do when we say "stop"?)
+Make Subsystem.java so that we can tell the hardware what to do, regardless of whether the hardware is SIM or REAL (What should the motors do when we say "start"? What should the motors do when we say "stop"?)
 {% endstep %}
 
 {% step %}
@@ -82,9 +81,9 @@ Add some game controller button mapping to the actions we created in Subsystem.j
 {% step %}
 #### Our goal is to press that same button, but instead of spinning a virtual motor, we spin a real motor.&#x20;
 
-Make SubsystemIOReal.java to control the real life subsystem hardware.
+Make a SubsystemIOReal.java that implements SubsystemIO. SubsystemIOReal can control the real life subsystem hardware.
 
-(Now we can press the left trigger to stop the SIM or REAL subsystem)
+(Now we can press the left trigger to stop the SIM subsystem or REAL subsystem depending on the mode we choose)
 {% endstep %}
 
 {% step %}
@@ -94,7 +93,23 @@ Maybe the real robot does something really weird during a game competition match
 {% endstep %}
 {% endstepper %}
 
+### Another reason to structure the code this way:
 
+What if the team decides "hey we can't use Krakens (TalonFX) anymore we need to swap to NEOs (SparkMax)"&#x20;
 
+We want code files to know as little about each other as possible (this is called **decoupling**)&#x20;
 
+👎Code that isn't decoupled: you change one thing, now we have to change everything because it's connected to the code we change.
 
+👍Decoupled code: easier to change, because we can put aside the code that isn't connected to the code we are changing. We know which parts of code won't be affected by the change because they aren't connected to the changed code.
+
+We are able to swap out the motor type in SubsystemIOReal.java without needing to change a line of code in Subsystem.java. That's much less work and less chance to make errors 🥳
+
+This concept is called **dependency injection**.&#x20;
+
+### Recap of dependency injection:
+
+* Subsystem.java says "go forwards" and "go backwards" without caring about the kind of motors it is using
+* It's the files that implement the interface SubsystemIO (SubsystemIOSim and SubsystemIOReal) that actually explain what "go forwards" and "go backwards" does to the subsystem's motors.
+* SubsystemIOSim will explain how to change the voltage of fake virtual motors.
+* SubsystemIOTalonFX will explain how to change the voltage of TalonFX motors.
