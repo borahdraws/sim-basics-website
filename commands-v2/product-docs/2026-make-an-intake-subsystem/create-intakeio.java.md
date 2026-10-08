@@ -111,11 +111,13 @@ public interface IntakeIO {}
 ```
 {% endcode %}
 
-### Code breakdown
+### Code breakdown #1
+
+‼️Most important concepts to know
 
 <details>
 
-<summary>Comments</summary>
+<summary>‼️Comments</summary>
 
 When the computer compiles and runs the code, it ignores any words typed in the same line after `//`. The computer also ignores any words sandwiched between `/*` and `*/` .
 
@@ -249,7 +251,9 @@ public interface IntakeIO {
 ```
 {% endcode %}
 
-### Code breakdown
+### Code breakdown #2
+
+‼️Most important concepts to know
 
 <details>
 
@@ -301,7 +305,7 @@ The first time you build/simulate your code after adding @AutoLog, AdvantageKit 
 
 <details>
 
-<summary>Variables</summary>
+<summary>‼️Variables</summary>
 
 Data is crucial for programming!
 
@@ -429,9 +433,11 @@ public interface IntakeIO {
 ```
 {% endcode %}
 
+‼️Most important concepts to know
+
 <details>
 
-<summary>What is a method?</summary>
+<summary>‼️What is a method?</summary>
 
 Instead of rewriting the same code over and over again, we can put it inside a **method**.
 
@@ -441,7 +447,7 @@ A method is a block of code that runs every time we call it, or ask our code to 
 
 <details>
 
-<summary>Method components</summary>
+<summary>‼️Method components</summary>
 
 There are five components to a method. Let's use the second method in this interface as an example:
 
@@ -575,4 +581,6 @@ When we write our method `setIntakeVoltage` in IntakeIOTalonFX, our method `setI
 
 ## Congrats!
 
-That was a lot of information, but we have finally set up our IntakeIO. Lot of work to try to get something to move by pressing a button. Most of us don't have access to a robot to test our code. In the upcoming lessons we will use our IntakeIO interface to create a virtual intake subsystem.
+That was a lot of information, but we have finally set up our IntakeIO interface. Lot of work to try to get something to move by pressing a button.&#x20;
+
+Most of us don't have access to a robot to test our code. In the upcoming lessons we will use our IntakeIO interface to create a virtual intake subsystem.
