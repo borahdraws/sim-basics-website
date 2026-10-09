@@ -7,7 +7,7 @@ icon: umbrella
 
 ## What you'll need
 
-* [ ] A computer that you can download things onto
+* [ ] A computer with WPILib installed
 * [x] Internet connection
 
 ## Download the AdvantageKit\_KitBot2026Template robot code
@@ -75,7 +75,7 @@ Make Subsystem.java so that we can tell the hardware what to do, regardless of w
 {% endstep %}
 
 {% step %}
-Add some game controller button mapping to the actions we created in Subsystem.java (maybe "start" is "press the left bumper" and "stop" is "press the left trigger")
+Add some game controller button mapping to the actions we created in Subsystem.java (maybe "start" is "press the left bumper" and "stop" is "press the left trigger") This will go inside RobotContainer.java which can be found in src >> main >> java >> frc >> robot
 {% endstep %}
 
 {% step %}
@@ -93,7 +93,7 @@ Maybe the real robot does something really weird during a game competition match
 {% endstep %}
 {% endstepper %}
 
-### Another reason to structure the code this way:
+### Another reason to structure the code using AdvantageKit:
 
 What if the team decides "hey we can't use Krakens (TalonFX) anymore we need to swap to NEOs (SparkMax)"&#x20;
 
@@ -109,7 +109,7 @@ This concept is called **dependency injection**.&#x20;
 
 ### Recap of dependency injection:
 
-* Subsystem.java says "go forwards" and "go backwards" without caring about the kind of motors it is using
-* It's the files that implement the interface SubsystemIO (SubsystemIOSim and SubsystemIOReal) that actually explain what "go forwards" and "go backwards" does to the subsystem's motors.
-* SubsystemIOSim will explain how to change the voltage of fake virtual motors.
-* SubsystemIOTalonFX will explain how to change the voltage of TalonFX motors.
+* Subsystem.java explains "go forwards" and "go backwards" without caring about the kind of motors it is using
+* It's the files that implement the interface SubsystemIO (SubsystemIOSim.java and SubsystemIOReal.java) that actually explain what "go forwards" and "go backwards" does to the subsystem's motors.
+  * SubsystemIOSim.java will explain how to change the voltage of fake virtual motors.
+  * SubsystemIOTalonFX.java will explain how to change the voltage of TalonFX motors.
