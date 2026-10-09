@@ -3,7 +3,7 @@ description: What do we need to start?
 icon: utensils
 ---
 
-# Create IntakeIO.java
+# Create IntakeIO
 
 ## What you'll need
 
@@ -11,7 +11,7 @@ icon: utensils
 * [x] Internet connection
 * [ ] The previously downloaded AdvantageKit\_TalonFXSwerveTemplate robot code
 
-## What are we doing?
+## 1. What are we doing?
 
 Our goal is to add an intake subsystem to AdvantageKit\_TalonFXSwerveTemplate. This is a simple subsystem with only one motor. We will be able to spin a wheel forwards and backwards to grab or release a game item.
 
@@ -49,7 +49,7 @@ We need this so that our robot code knows the 'A' and 'B' buttons control the in
 {% endstep %}
 {% endstepper %}
 
-## Setting up IntakeIO.java
+## 2. Setting up IntakeIO.java
 
 Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.&#x20;
 
@@ -97,9 +97,7 @@ public class IntakeIO {}
 
 At the very bottom of the code, replace `class` with `interface` so that the code looks like:
 
-{% code overflow="wrap" %}
-```java
-// Copyright (c) FIRST and other WPILib contributors.
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
@@ -107,9 +105,8 @@ package frc.robot.subsystems.intake;
 
 /** Add your docs here. */
 
-public interface IntakeIO {}
-```
-{% endcode %}
+<strong>public interface IntakeIO {}
+</strong></code></pre>
 
 ### Code breakdown #1
 
@@ -223,33 +220,30 @@ Our code will need to be inside these curly brackets `{}` called braces so that 
 
 Once you familiarize yourself with everything above, let's add some code to the interface.
 
-## Add a static nested class with variables for AutoLog
+## 3. Add a static nested class with variables for AutoLog
 
 Compare the code below to your current IntakeIO.java file, then add the code missing from your file so that it matches the code below:
 
-{% code overflow="wrap" %}
-```java
-// Copyright (c) FIRST and other WPILib contributors.
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems.intake;
 
-import org.littletonrobotics.junction.AutoLog;
-
+<strong>import org.littletonrobotics.junction.AutoLog;
+</strong>
 /** An interface for the intake subsystem */
 public interface IntakeIO {
 
-  @AutoLog
-  public static class IntakeIOInputs {
-    public double intakePositionRadians = 0.0;
-    public double intakeVelocityRadiansPerSeconds = 0.0;
-    public double intakeAppliedVoltage = 0.0;
-    public double intakeCurrentAmperage = 0.0;
-  }
+<strong>  @AutoLog
+</strong><strong>  public static class IntakeIOInputs {
+</strong><strong>    public double intakePositionRadians = 0.0;
+</strong><strong>    public double intakeVelocityRadiansPerSeconds = 0.0;
+</strong><strong>    public double intakeAppliedVoltage = 0.0;
+</strong><strong>    public double intakeCurrentAmperage = 0.0;
+</strong>  }
 }
-```
-{% endcode %}
+</code></pre>
 
 ### Code breakdown #2
 
@@ -401,13 +395,11 @@ Yes, you can do that. But we put the class IntakeIOInputs inside the interface I
 
 </details>
 
-## Add Methods
+## 4. Add Empty Methods
 
-Compare the code below to your IntakeIO.java file, then add the code missing from your file so that it matches the code below:
+Add code to your file so that it matches the code below:
 
-{% code overflow="wrap" %}
-```java
-// Copyright (c) FIRST and other WPILib contributors.
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
@@ -426,12 +418,11 @@ public interface IntakeIO {
     public double intakeCurrentAmperage = 0.0;
   }
   
-  public default void updateInputs(IntakeIOInputs inputs) {}
-
-  public default void setIntakeVoltage(double voltage) {}
-}
-```
-{% endcode %}
+<strong>  public default void updateInputs(IntakeIOInputs inputs) {}
+</strong>
+<strong>  public default void setIntakeVoltage(double voltage) {}
+</strong>}
+</code></pre>
 
 ‼️Most important concepts to know
 
@@ -579,8 +570,8 @@ When we write our method `setIntakeVoltage` in IntakeIOTalonFX, our method `setI
 
 </details>
 
-## Congrats!
+## 5. Congrats!
 
 That was a lot of information, but we have finally set up our IntakeIO interface. Lot of work to try to get something to move by pressing a button.&#x20;
 
-Most of us don't have access to a robot to test our code. In the upcoming lessons we will use our IntakeIO interface to create a virtual intake subsystem.
+Most of us don't have access to a robot to test our code. In the IntakeIOSim section we will use our IntakeIO interface to create a virtual intake subsystem.

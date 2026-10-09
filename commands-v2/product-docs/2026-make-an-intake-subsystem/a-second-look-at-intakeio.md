@@ -1,6 +1,6 @@
 ---
 description: Review concepts that were introduced in IntakeIO
-icon: utensils
+icon: eyes
 ---
 
 # A second look at IntakeIO
@@ -89,277 +89,220 @@ package frc.robot.subsystems.drive;
 
 <details>
 
-<summary>Access Modifier</summary>
+<summary>What is an access modifier?</summary>
 
-Access modifiers change which code can be seen by other code.&#x20;
+An access modifier on an interface:
 
-{% code overflow="wrap" %}
-```java
-public interface IntakeIO {}
-```
-{% endcode %}
+* Access modifiers change whether other code files can see this interface.
+* The interface DriveIO is `public`, so other code files can see it.
 
-In this case, the access modifier is changing whether other files can see the IntakeIO.java interface or not. We will be applying access modifiers to other things such as specific code inside of our files.
+An access modifier on a class:
 
-Our IntakeIO interface needs to be public, because it is our template. If it is private, then our SIM and REAL files won't be able to see our template.
-
-{% hint style="success" %}
-Any top-level interface must always be public.&#x20;
-
-A top-level interface is an interface with a file name that matches the interface inside of it.
-
-Our file is IntakeIO.java and the interface inside of it is called IntakeIO, that means IntakeIO is a top level interface.
-{% endhint %}
+* Changes whether other code files can see this class.
+* What is the access modifier for the Drive class inside of Drive.java? The class is `public`, so other code files can see it.
 
 </details>
 
 <details>
 
-<summary><code>interface</code></summary>
+<summary>What is an interface?</summary>
 
-{% code overflow="wrap" %}
-```java
-public interface IntakeIO {}
-```
-{% endcode %}
-
-An interface is like a template for our code. We will use IntakeIO to make IntakeIOSim and IntakeIOTalonFX.
-
-Maybe while we are making IntakeIOSim, we forget to add something that should be there based on how we made the IntakeIO template.
-
-Now the computer will get upset if we try to run IntakeIOTalonFX until we add the thing that is missing.
+This is a template that can be used by other code files.
 
 </details>
 
 <details>
 
-<summary>Braces</summary>
+<summary>What are braces?</summary>
 
-Our code will need to be inside these curly brackets `{}` called braces so that the computer will properly read the code.
+Braces help the computer read the code. Java needs braces, but some different programming languages like Python don't need braces.
 
 </details>
 
-Once you familiarize yourself with everything above, let's add some code to the interface.
+<details>
 
-## Add a static nested class with variables for AutoLog
+<summary>How to Import and why?</summary>
 
-Compare the code below to your current IntakeIO.java file, then add the code missing from your file so that it matches the code below:
+We import code that was already written so we don't have to write it again in our code file.
+
+In AdvantageKit\_TalonFXSwerveTemplate, open the file RobotContainer.java. You can find many imports at the top of the file, including:
 
 {% code overflow="wrap" %}
 ```java
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
-package frc.robot.subsystems.intake;
-
-import org.littletonrobotics.junction.AutoLog;
-
-/** An interface for the intake subsystem */
-public interface IntakeIO {
-
-  @AutoLog
-  public static class IntakeIOInputs {
-    public double intakePositionRadians = 0.0;
-    public double intakeVelocityRadiansPerSeconds = 0.0;
-    public double intakeAppliedVoltage = 0.0;
-    public double intakeCurrentAmperage = 0.0;
-  }
-}
+import frc.robot.subsystems.drive.ModuleIO;
+import frc.robot.subsystems.drive.ModuleIOSim;
+import frc.robot.subsystems.drive.ModuleIOTalonFX;
 ```
 {% endcode %}
 
-### Code breakdown #2
+Control + click on `ModuleIO` (or `ModuleIOSim`, or any of the other imports) to open that code file and look at all the code we didn't have to rewrite.
 
-‼️Most important concepts to know
+We use `import` so we can use that code in RobotContainer.java. Eventually we will add the IO, SIM and REAL files we make for our Intake subsystem to this RobotContainer.java:
+
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">import frc.robot.subsystems.drive.ModuleIO;
+import frc.robot.subsystems.drive.ModuleIOSim;
+import frc.robot.subsystems.drive.ModuleIOTalonFX;
+<strong>import frc.robot.subsystems.intake.IntakeIO;
+</strong><strong>import frc.robot.subsystems.intake.IntakeIOSim;
+</strong><strong>import frc.robot.subsystems.intake.IntakeIOTalonFX;
+</strong></code></pre>
+
+Here are some other examples using `import` that we will be using later:
+
+{% code overflow="wrap" %}
+```java
+import edu.wpi.first.math.util.Units;
+```
+{% endcode %}
+
+This will allow us to more easily write code converting units (like meters to inches, or feet to centimeters, or radians to degrees).
+
+{% code overflow="wrap" %}
+```java
+import com.ctre.phoenix6.hardware.TalonFX;
+```
+{% endcode %}
+
+This will allow us to more easily write code controlling a TalonFX motor in the REAL file.
+
+</details>
 
 <details>
 
-<summary><code>import</code></summary>
+<summary>Variables are usually the first thing you learn when learning coding.</summary>
 
-Remember in the previous lesson we went to the leftmost column and clicked the WPILib icon (Vendor Dependencies) Someone already wrote a lot of code for us so that we don't have to write it from scratch. We can just import it instead.
+Let's look at a variable in AdvantageKit\_KitBot2026Template. Navigate to src / main >> java / frc / robot >> subsystems/drive >> DriveIOSim.java.
+
+![](<../.gitbook/assets/unknown (32).png>)
+
+The variable is:
+
+{% code overflow="wrap" %}
+```java
+private boolean closedLoop = false;
+```
+{% endcode %}
+
+* What is this variable's access modifier?
+  * `private` - only DriveIOSim can see, use and modify this variable.
+* What is this variable's data type?
+  * `bool` - it must contain true or false
+* What is this variable's identifier?
+  * `closedLoop`
+* What is this variable's value?
+  * `false`
 
 {% hint style="info" %}
-Hold Control + click on .`AutoLog` at the very end of the line `import org.littletonrobotics.junction.AutoLog;`
+What happens if you forget to add an access modifier to a variable (or to a class or interface)?
 
-Java will open up the AutoLog code for us to look at. This shortcut is useful and will be used a lot.
-
-Mac users use Command (⌘) + click
-{% endhint %}
-
-**How do we know what we need to import?**&#x20;
-
-It depends on what your code need. It's difficult to memorize every single import but you will get a better sense of what you need with the more code you write.
-
-**How do you know exactly what to type after `import`?**
-
-We can look up documentation online for the code we need.
-
-While you write code, VS Code will automatically help you add imports. Try deleting the `import` line from your code (or commenting it out)
-
-<figure><img src="../.gitbook/assets/unnamed.png" alt=""><figcaption></figcaption></figure>
-
-You will see some wavy underline appear under `@AutoLog`.
-
-Hover over the wavy underline and VS Code will prompt, "AutoLog cannot be resolve to a type". Click the option **Quick Fix...** and then click **Import 'AutoLog' (org.littletonrobotics.junction)**
-
-Java will pop in the import you need to be able to use @AutoLog.
-
-You can use this Quick Fix to import other files as well.
-
-</details>
-
-<details>
-
-<summary><code>@AutoLog</code> (not <code>@Autolog!</code>)</summary>
-
-This is something special to AdvantageKit that allows us see our data in AdvantageScope.
-
-You'll put this in your IO above everything you want to check in your simulation.
-
-The first time you build/simulate your code after adding @AutoLog, AdvantageKit will automatically create some new files so we can see the data in AdvantageScope.
-
-</details>
-
-<details>
-
-<summary>‼️Variables</summary>
-
-Data is crucial for programming!
-
-A variable is a container that contains data. It has four components:
-
-{% stepper %}
-{% step %}
-### (optional, kinda) The access modifier
-
-The access modifier changes which code can see this variable.
-
-Here are some access modifiers used frequently in FRC programming:
-
-* `public` - this variable can be seen (and changed!) by any files in your program.
-* `private` - this variable can only be seen by the section of code it's inside.
-{% endstep %}
-
-{% step %}
-### A data type: the kind of data stored in the variable
-
-Here are some data types used frequently in FRC programming:
-
-* `double` - decimal number (`19.99`, `20.0`)
-* `bool` - boolean, contains either `true` or `false`
-* `int` - integer, or whole number (`3`, `1000`)
-{% endstep %}
-
-{% step %}
-### A name
-
-Also called an identifier. Every variable in a section of code must have a different name. It is most helpful to name the variable something that describes the purpose of the variable.
-{% endstep %}
-
-{% step %}
-### (optional, kinda) The value
-
-The actual data inside the value.
-
-An integer variable must always contain an integer. A double must always contain a decimal. A boolean must contain true or false.&#x20;
-
-We can change the value of a variable with `=`.&#x20;
-
-`=` means "is changed to the value of".
-{% endstep %}
-{% endstepper %}
-
-Let's look at this code:
+Let's pretend the boolean looks like this instead:
 
 {% code overflow="wrap" %}
 ```java
-public double intakePositionRadians = 0.0;
+boolean closedLoop = false;
 ```
 {% endcode %}
 
-* **Access modifier:** This is a `public` variable (can be seen by other files).
-* **Data type:** `double` - we want it to contain a decimal value.
-* **Name/Identifier:** `intakePositionRadians` - this is a variable for the intake subsystem, and it will contain the position of the motor in radians.&#x20;
+This variable can now be seen by any code inside the package. This level of access is called package-private. Let's go up to the top of the code to look for DriveIOSim's package:
+
+{% code overflow="wrap" %}
+```java
+package frc.robot.subsystems.drive;
+```
+{% endcode %}
+
+A package-private variable can be seen by any code that has the same package aka it's inside the folder named drive.&#x20;
+
+<p align="center"><img src="../.gitbook/assets/unknown (33).png" alt="" data-size="original"></p>
+
+These .java files all have the same package as DriveIOSim, so that means any of these code files could now accidentally change `closedLoop`. We don't want that, which is why we make sure `closedLoop` is `private`.
+{% endhint %}
+
+Let's look at one more variable. Go to src / main >> java / frc / robot >> RobotContainer.java
+
+At the top somewhere you will find:
+
+{% code overflow="wrap" %}
+```java
+private final Drive drive;
+```
+{% endcode %}
 
 {% hint style="info" %}
-360° = 2π radians, about 6.28 radians
+`final` means we can't change the value of the variable once we give it a value, or initialize the variable.
 {% endhint %}
 
-* **Value:** We give `intakePositionRadians` a value of `0.0` using `=` (`intakePositionRadians` is changed to the value of `0.0`)
+* What is this variable's access modifier?
+  * `private` - only RobotContainer can see, use and modify this variable.
+* What is this variable's data type?
+  * `Drive` - the value of this variable is some kind of Drive. We have at least two kinds of Drive: Sim and REAL.
+* What is this variable's identifier?
+  * `drive`
+* What is this variable's value?
+  * We haven't assigned a value yet!
+
+If drive is assigned the value of DriveIOSim, then we control the virtual robot. If drive is assigned the value of DriveIOTalonFX, then we control the real robot motors.
+
+If the drive is assigned the value of DriveIO (while we are replaying some data that the robot recorded), then the drive subsystem will safely do nothing.
 
 </details>
 
 <details>
 
-<summary><code>static nested class</code></summary>
+<summary>Methods have five components.</summary>
 
-```java
-public static class IntakeIOInputs {
-```
+1. Modifier
+2. Return type
+3. Name
+4. (optional) Parameter
+5. Body
 
-To explain the meaning of `static` we need to know the difference between a `class` and an `object`.&#x20;
-
-* We start with an `interface`, IntakeIO.java.
-* We create the `class` IntakeIOSim.java from IntakeIO.java with code to run for the sim.
-
-{% hint style="danger" %}
-Classes are only blueprints, and they cannot run the code they contain. The variables inside a class will only exist once an object is created from that class.
-{% endhint %}
-
-* Inside of Intake.java (the subsystem file), we create an `object` from the `class` IntakeIOSim. Now we can run the code!
-
-Inside of IntakeIO, we have a class called `IntakeIOInputs` with four variables that we need data from.&#x20;
-
-We put `static` on the class `IntakeIOInputs` so that we don't need to make an object in order for these four variables to exist. Now they will be created when we start the robot code.
-
-**So why not make a separate IntakeIOInputs.java file to put the IntakeIOInputs class inside?**
-
-Yes, you can do that. But we put the class IntakeIOInputs inside the interface IntakeIO so that we have less files to keep track of. It's easier to find the variables in the static class when they are put in the context of where it needs to be used.
-
-</details>
-
-## Add Methods
-
-Compare the code below to your IntakeIO.java file, then add the code missing from your file so that it matches the code below:
+In AdvantageKit\_KitBot2026Template, open the file DriveIO.java (can be found in subsystems >> drive). How many methods are in this interface? What are the methods?
 
 {% code overflow="wrap" %}
 ```java
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+public default void updateInputs(DriveIOInputs inputs) {}
 
-package frc.robot.subsystems.intake;
+public default void setVoltage(double leftVolts, double rightVolts) {}
 
-import org.littletonrobotics.junction.AutoLog;
-
-/** An interface for the intake subsystem */
-public interface IntakeIO {
-
-  @AutoLog
-  public static class IntakeIOInputs {
-    public double intakePositionRadians = 0.0;
-    public double intakeVelocityRadiansPerSeconds = 0.0;
-    public double intakeAppliedVoltage = 0.0;
-    public double intakeCurrentAmperage = 0.0;
-  }
-  
-  public default void updateInputs(IntakeIOInputs inputs) {}
-
-  public default void setIntakeVoltage(double voltage) {}
-}
+public default void setVelocity(double leftRadPerSec, double rightRadPerSec, double leftFFVolts, double rightFFVolts) {}
 ```
 {% endcode %}
 
-‼️Most important concepts to know
+There are three methods: updateInputs, setVoltage and setVelocity.
 
-<details>
+Take a look at setVoltage.
 
-<summary>‼️What is a method?</summary>
+{% code overflow="wrap" %}
+```java
+public default void setVoltage(double leftVolts, double rightVolts) {}
+```
+{% endcode %}
 
-Instead of rewriting the same code over and over again, we can put it inside a **method**.
+**What is the Modifier?**
 
-A method is a block of code that runs every time we call it, or ask our code to run it. You might call a method in a different code file, or inside the same file.
+`public`
+
+**What is the Return Type?**
+
+`void`
+
+**What is the method name?**
+
+`setVoltage`
+
+**Does this method have parameters? How many?**
+
+setVoltage has two parameters.
+
+_What is the data type and name of each parameter?_
+
+* `double leftVolts`
+  * Data type: double, aka a decimal
+  * Name: leftVolts
+* `double rightVolts`
+  * Data type: double, aka a decimal
+  * Name: rightVolts
 
 </details>
 
@@ -496,9 +439,3 @@ When we write our method `setIntakeVoltage` in IntakeIOTalonFX, our method `setI
 {% endstepper %}
 
 </details>
-
-## Congrats!
-
-That was a lot of information, but we have finally set up our IntakeIO interface. Lot of work to try to get something to move by pressing a button.&#x20;
-
-Most of us don't have access to a robot to test our code. In the upcoming lessons we will use our IntakeIO interface to create a virtual intake subsystem.

@@ -10,7 +10,7 @@ icon: umbrella
 * [ ] A computer with WPILib installed
 * [x] Internet connection
 
-## Download the AdvantageKit\_KitBot2026Template robot code
+## 1. Download the AdvantageKit\_KitBot2026Template robot code
 
 In the 2026 FRC game, the goals was to drive the robot around and shoot balls into a goal.
 
@@ -50,13 +50,15 @@ There are two subsystems in this kitbot code:
 
 <table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th></tr></thead><tbody><tr><td align="center">Drive</td><td>The drivetrain subsystem that lets the robot move around</td></tr><tr><td align="center">Superstructure</td><td><p>The subsystem that lets the robot eject, intake, and launch balls.</p><p></p><p>The Superstructure has two motors, the intake motor and the feeder (shooter) motor.</p></td></tr></tbody></table>
 
+## 2. AdvantageKit Structure
+
 Look inside both the drive and superstructure folders. Both subsystems have at least four file types.
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>SuperstructureConstants.java is something that makes the code more complicated but saves lots of time later, we will look at it later</p></figcaption></figure>
 
 <table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th></tr></thead><tbody><tr><td align="center"><strong>SubsystemIOSim.java</strong></td><td>The SIM file lets us control a <strong>sim</strong>ulated, virtual version of the motors on a virtual robot. </td></tr><tr><td align="center"><strong>SubsystemIOTalonFX.java</strong></td><td><p>The REAL file lets us control the real motors on a real robot. In this case, the motors are TalonFXs.</p><p></p><p>The kitbot template also contains SuperstructureIOSpark and SuperstructureIOTalonSRX, so instead of TalonFX motors you might use Spark motors or TalonSRX motors.</p></td></tr><tr><td align="center"><strong>SubsystemIO.java</strong></td><td><p>IO stands for Input Output. Start here when making a new subsystem.  </p><p></p><p>The IO file acts like a template to help set up the SIM and REAL files. Because we use this IO template, we can make sure that the SIM and REAL robot have the same motors and can be controlled with the same code.</p><p></p><p>Just as important, this IO file contains a box called SubsystemIOInputs that records data. Regardless of whether we drove the SIM robot or REAL robot we can replay the data (and see what went wrong 💀)</p></td></tr><tr><td align="center"><strong>Subsystem.java</strong></td><td><p>You might see this with Subsystem after the hardware name (Intake.java might be called IntakeSubsystem.java)</p><p></p><p>This is the file where we define what we want the subsystem to do based on the code in the IO files.</p><p></p><p>In this kitbot, the intake motor and the feeder (shooter) motor must always work together to keep balls from getting stuck, which is why the motors were coded together in one Superstructure subsystem.</p></td></tr></tbody></table>
 
-## Why is the robot code designed this way?
+## 3. Why is the robot code designed this way?
 
 {% stepper %}
 {% step %}
