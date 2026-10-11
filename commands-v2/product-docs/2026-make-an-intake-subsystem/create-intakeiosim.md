@@ -46,10 +46,10 @@ public class IntakeIOSim {}
 ```
 {% endcode %}
 
-We are going to let the computer know we are using the IntakeIO interface as a template for this class. After the class name want to add `implements IntakeIO` so that the code looks like this:
+We are going to let the computer know we are using the IntakeIO interface as a template for this class. After the class name add `implements IntakeIO` so that the code looks like this:
 
-<pre class="language-java" data-overflow="wrap"><code class="lang-java"><strong>// Copyright (c) FIRST and other WPILib contributors.
-</strong>// Open Source Software; you can modify and/or share it under the terms of
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems.intake;
@@ -204,10 +204,26 @@ I get confused easily so I prefer to keep variable and parameter names different
 
 We will add one line of code inside the method.
 
-<pre class="language-java" data-overflow="wrap"><code class="lang-java">@Override
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot.subsystems.intake;
+
+/** Add your docs here. */
+public class IntakeIOSim implements IntakeIO {
+  private double simVoltage = 0.0;
+  
+  @Override
   public void updateInputs(IntakeIOInputs inputs) {
 <strong>    inputs.intakeAppliedVoltage = simVoltage;
 </strong>  }
+
+  @Override
+  public void setIntakeVoltage(double voltage) {
+    this.simVoltage = voltage;
+  }
+}
 </code></pre>
 
 What is the parameter we put into `updateInputs`?&#x20;
@@ -241,6 +257,8 @@ This code says:
 
 After we use the method `updateInputs` to change the value of `intakeAppliedVoltage`, `@AutoLog` lets us see the values changing in AdvantageScope.
 
+## Completed IntakeIOSim.java
+
 IntakeIOSim ready! Make sure you understand how these versions are different and that they both do the same thing:
 
 {% tabs %}
@@ -257,7 +275,9 @@ public class IntakeIOSim implements IntakeIO {
   private double simVoltage = 0.0;
   
   @Override
-  public void updateInputs(IntakeIOInputs inputs) {}
+  public void updateInputs(IntakeIOInputs inputs) {
+    inputs.intakeAppliedVoltage = simVoltage;
+  }
 
   @Override
   public void setIntakeVoltage(double voltage) {
@@ -280,7 +300,9 @@ public class IntakeIOSim implements IntakeIO {
   private double voltage = 0.0;
   
   @Override
-  public void updateInputs(IntakeIOInputs inputs) {}
+  public void updateInputs(IntakeIOInputs inputs) {
+    inputs.intakeAppliedVoltage = voltage;
+  }
 
   @Override
   public void setIntakeVoltage(double voltage) {

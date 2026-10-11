@@ -19,7 +19,7 @@ Since all game controllers are different, make sure you have the controller driv
 
 Go to the [wpilib.org](http://wpilib.org) website and select Install.&#x20;
 
-![](.gitbook/assets/unknown.png)
+![](<.gitbook/assets/unknown (2).png>)
 
 The website will redirect you to WPILib Documentation site.
 
@@ -27,11 +27,11 @@ In the WPILib Documentation there is a section called ZERO TO ROBOT with Step 2:
 
 Scroll down to the section Downloading >> WPILib Installer. The bright blue rectangle button looks something like this and says Downloads:
 
-![](<.gitbook/assets/unknown (1).png>)
+![](<.gitbook/assets/unknown (1) (1).png>)
 
 That button will redirect you to WPILib's Github. Scroll down until you see Downloads. It looks something like this:
 
-![](<.gitbook/assets/unknown (2).png>)
+![](<.gitbook/assets/unknown (2) (1).png>)
 
 Click on Windows to download the installer for Windows 11.
 

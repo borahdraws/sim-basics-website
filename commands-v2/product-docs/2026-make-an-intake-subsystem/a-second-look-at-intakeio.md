@@ -18,10 +18,6 @@ This page is a quick "let's make sure you really understand what we have introdu
 * [ ] The previously downloaded AdvantageKit\_TalonFXSwerveTemplate robot code
 * [ ] The previously downloaded AdvantageKit\_KitBot2026Template robot code
 
-### Code breakdown #1
-
-‼️Most important concepts to know
-
 <details>
 
 <summary>Every AdvantageKit subsystem has four file types.</summary>
@@ -218,33 +214,6 @@ A package-private variable can be seen by any code that has the same package aka
 These .java files all have the same package as DriveIOSim, so that means any of these code files could now accidentally change `closedLoop`. We don't want that, which is why we make sure `closedLoop` is `private`.
 {% endhint %}
 
-Let's look at one more variable. Go to src / main >> java / frc / robot >> RobotContainer.java
-
-At the top somewhere you will find:
-
-{% code overflow="wrap" %}
-```java
-private final Drive drive;
-```
-{% endcode %}
-
-{% hint style="info" %}
-`final` means we can't change the value of the variable once we give it a value, or initialize the variable.
-{% endhint %}
-
-* What is this variable's access modifier?
-  * `private` - only RobotContainer can see, use and modify this variable.
-* What is this variable's data type?
-  * `Drive` - the value of this variable is some kind of Drive. We have at least two kinds of Drive: Sim and REAL.
-* What is this variable's identifier?
-  * `drive`
-* What is this variable's value?
-  * We haven't assigned a value yet!
-
-If drive is assigned the value of DriveIOSim, then we control the virtual robot. If drive is assigned the value of DriveIOTalonFX, then we control the real robot motors.
-
-If the drive is assigned the value of DriveIO (while we are replaying some data that the robot recorded), then the drive subsystem will safely do nothing.
-
 </details>
 
 <details>
@@ -308,7 +277,7 @@ _What is the data type and name of each parameter?_
 
 <details>
 
-<summary>‼️Method components</summary>
+<summary>Method components</summary>
 
 There are five components to a method. Let's use the second method in this interface as an example:
 

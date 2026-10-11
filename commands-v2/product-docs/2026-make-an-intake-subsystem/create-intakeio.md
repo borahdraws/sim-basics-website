@@ -63,7 +63,7 @@ We will rename our new folder to intake.
 When programming, capitalization matters! It's good to start a habit now of noticing how things are capitalized.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 Right click the folder intake >> Create a new class/command
 
