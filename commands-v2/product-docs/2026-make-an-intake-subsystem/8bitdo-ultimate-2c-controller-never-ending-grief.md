@@ -2,11 +2,11 @@
 description: This controller gives me never ending grief
 ---
 
-# 8bitdo Ultimate 2C Controller never ending grief
+# 😩 8bitdo Ultimate 2C Controller never ending grief
 
 ## Bluetooth
 
-Bluetooth probably won't work, plug in the USB-C wire.
+Bluetooth won't work, plug in the USB-C wire.
 
 ## Drivers
 
@@ -16,13 +16,13 @@ If that also doesn't work, try downloading the 8BitDo Ultimate Software V2 contr
 
 When Sim GUI opens up we can see these inputs change when we move the joysticks and press the buttons:
 
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
+The object `CommandXboxController` cannot be used with the 8bitdo Ultimate 2C Controller because the 8bitdo input numbers are slightly different from a plain Xbox controller. For example it thinks the 8bitdo X button is the Y input, the left bumper doesn't register as a left bumper input etc..
 
-The object `CommandXboxController` cannot be used with the 8bitdo Ultimate 2C Controller because the 8bitdo changes the numbers slightly different from a plain Xbox controller. For example it thinks the 8bitdo X button is the Y input, the left bumper doesn't register as a left bumper input etc..
+If you open the `CommandXboxController` you will see that it extends the `CommandGenericHID` class.
 
-If you open the CommandXboxController you will see that it extends the CommandGenericHID class.
-
-Somewhere in your code, create a new class called EightBitDoController and extend CommandGenericHID.
+Somewhere in your code, create a new class called EightBitDoController and extend `CommandGenericHID`.
 
 Add a constructor class and `XboxController` variable, just like in the `CommandXboxController` class.
 
@@ -81,5 +81,36 @@ public class EightBitDoController extends CommandGenericHID {
 ```
 {% endcode %}
 
+In RobotContainer.java, we can use our newly made controller class to make new button bindings.
 
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// bunch of code up there
 
+public class RobotContainer {
+  // Subsystems
+  
+  // Controller
+  private final CommandXboxController controller = new CommandXboxController(0);
+  private final CommandXboxController gunnerController = new CommandXboxController(1);
+<strong>  private final EightBitDoController gunnerEightBitDo = new EightBitDoController(2);
+</strong>  
+// bunch of code here
+
+private void configureButtonBindings() {
+  // all the drive commands
+  
+  intake.setDefaultCommand(intake.Stop());
+
+<strong>  gunnerEightBitDo
+</strong>    .leftBumper()
+    .whileTrue(
+      intake.moveForwards()
+    );
+      
+<strong>  gunnerEightBitDo
+</strong>    .leftTrigger()
+    .whileTrue(
+      intake.moveBackwards()
+    );
+}
+// bunch of code down there
+</code></pre>

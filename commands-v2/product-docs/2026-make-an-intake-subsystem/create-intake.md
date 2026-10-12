@@ -11,7 +11,7 @@ icon: truck-moving
 * [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
-## Add a new Subsystem Class Intake to AdvantageKit\_TalonFXSwerveTemplate
+## 1. Add a new Subsystem Class Intake
 
 Let's make our own subsystem class! Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.
 
@@ -69,7 +69,7 @@ The class that we start with is the **parent** class, and the class that grabs c
 
 </details>
 
-## Add class variables&#x20;
+## 2. Add class variables&#x20;
 
 Add two variables:
 
@@ -116,7 +116,7 @@ private final IntakeIOInputsAutoLogged inputs = new IntakeIOInputsAutoLogged();
 
 We create a variable called `inputs` that helps us update data properly in AdvantageKit (this will give you an error until you build the code once)
 
-## Fill in class constructor
+## 3. Fill in class constructor
 
 Add a parameter and single line to the class constructor:
 
@@ -145,7 +145,7 @@ public class Intake extends SubsystemBase {
 
 The value of the class variable `io` is changed to the value of the method parameter `io`.
 
-## Fill in periodic
+## 4. Fill in periodic()
 
 The method periodic will be called once per scheduler run (typically once every 20 milliseconds)
 
@@ -204,7 +204,7 @@ Logger.processInputs("Intake", inputs);
 ```
 {% endcode %}
 
-## Creating commands
+## 5. Creating Intake commands
 
 Review our goals for what we want the intake to do:
 
@@ -212,7 +212,7 @@ Review our goals for what we want the intake to do:
 
 It looks like we will need at least three ways for the intake to move: move forwards, move backwards, don't move (stop).
 
-## Create command moveForwards
+### Create command moveForwards()
 
 <pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
@@ -307,6 +307,8 @@ public Command moveForwards() {
 ```
 {% endcode %}
 
+### Create commands moveBackwards() and stop()
+
 We can add the command `moveBackwards()` using negative voltage and command stop() to change voltage to 0.
 
 <pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
@@ -373,9 +375,9 @@ We could use `runOnce()` instead of `run()` for the `stop` command. This will ma
   }
 ```
 
-## Completed Intake.java
+## 6. Completed Intake.java
 
-Code isn't easy to teach because everyone has their own definition of what is the right way to do stuff. You can see in these examples that there are multiple ways to write the Subsystem commands. These are just two of several ways to prepare this subsystem.
+Code isn't easy to teach because everyone has their own definition of what is the right way to do stuff, and different teams will need different code. You can see in these examples that there are multiple ways to write the Subsystem commands. These are just two of several ways to prepare this subsystem.
 
 {% tabs %}
 {% tab title="Version I'll use" %}

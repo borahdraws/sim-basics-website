@@ -307,7 +307,7 @@ A variable is a container that contains data. It has four components:
 
 {% stepper %}
 {% step %}
-### (optional, kinda) The access modifier
+**(optional, kinda) The access modifier**
 
 The access modifier changes which code can see this variable.
 
@@ -318,7 +318,7 @@ Here are some access modifiers used frequently in FRC programming:
 {% endstep %}
 
 {% step %}
-### A data type: the kind of data stored in the variable
+**A data type: the kind of data stored in the variable**
 
 Here are some data types used frequently in FRC programming:
 
@@ -328,13 +328,13 @@ Here are some data types used frequently in FRC programming:
 {% endstep %}
 
 {% step %}
-### A name
+**A name**
 
 Also called an identifier. Every variable in a section of code must have a different name. It is most helpful to name the variable something that describes the purpose of the variable.
 {% endstep %}
 
 {% step %}
-### (optional, kinda) The value
+**(optional, kinda) The value**
 
 The actual data inside the value.
 
@@ -450,7 +450,7 @@ public default void setIntakeVoltage(double voltage) {}
 
 {% stepper %}
 {% step %}
-### Modifier
+**Modifier**
 
 {% code overflow="wrap" %}
 ```java
@@ -468,7 +468,7 @@ We can add `default` to methods in an interface which tells Java "Hey, you can u
 {% endstep %}
 
 {% step %}
-### Return Type
+**Return Type**
 
 {% code overflow="wrap" %}
 ```java
@@ -495,7 +495,7 @@ Some return types used frequently in FRC programming:
 {% endstep %}
 
 {% step %}
-### Method Name
+**Method Name**
 
 {% code overflow="wrap" %}
 ```java
@@ -507,7 +507,7 @@ Name of the method, written in camelCase. `youShouldTypeYourMethodNameLikeThis`
 {% endstep %}
 
 {% step %}
-### (optional) Parameters
+**(optional) Parameters**
 
 {% code overflow="wrap" %}
 ```java
@@ -552,7 +552,7 @@ Parameters are optional depending on what your method needs (if it needs paramet
 {% endstep %}
 
 {% step %}
-### Method Body
+**Method Body**
 
 {% code overflow="wrap" %}
 ```java

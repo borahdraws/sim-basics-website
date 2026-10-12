@@ -11,7 +11,7 @@ icon: cart-shopping-fast
 * [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
-## Add a new class IntakeIOSim to AdvantageKit\_TalonFXSwerveTemplate
+## 1. Add a new class IntakeIOSim
 
 Let's make a IntakeIOSim class using our IntakeIO interface as a template. Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.
 
@@ -78,7 +78,7 @@ public class IntakeIOSim implements IntakeIO {
 </strong>}
 </code></pre>
 
-### Code breakdown
+### Code breakdown #1&#x20;
 
 <details>
 
@@ -111,7 +111,7 @@ private double simVoltage = 0.0;
 
 </details>
 
-## Fill in the setIntakeVoltage method
+## 2. Fill in the setIntakeVoltage method
 
 Let's make the second method first. We want to use this method to change our variable _simVoltage_ value to the value of the parameter `voltage`.
 
@@ -128,6 +128,8 @@ We will add one line of code inside the method.
 
 `this.simVoltage` is changed to the value of `voltage`.
 {% endhint %}
+
+### Code breakdown #2&#x20;
 
 <details>
 
@@ -200,7 +202,7 @@ I get confused easily so I prefer to keep variable and parameter names different
 
 </details>
 
-## Fill in the updateInputs method
+## 3. Fill in the updateInputs method
 
 We will add one line of code inside the method.
 
@@ -257,7 +259,7 @@ This code says:
 
 After we use the method `updateInputs` to change the value of `intakeAppliedVoltage`, `@AutoLog` lets us see the values changing in AdvantageScope.
 
-## Completed IntakeIOSim.java
+## 4. Completed IntakeIOSim.java
 
 IntakeIOSim ready! Make sure you understand how these versions are different and that they both do the same thing:
 

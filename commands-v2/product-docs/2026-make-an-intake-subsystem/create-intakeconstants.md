@@ -21,6 +21,8 @@ We can set up some variables that can be used by any files in the robot's code.
 * [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
+## 1. Create new class IntakeConstants
+
 Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.
 
 Open src >> main >> java >> frc >> robot >> subsystems >> intake. Create a new class called IntakeConstants.
@@ -60,7 +62,7 @@ public class IntakeConstants {
 
 When `static` is added to a variable, it means there's only one of that variable in the whole entire robot code.
 
-## Using the constants in your code
+## 2. Using the constants in your code
 
 We have to import the variables every time we want to use them in a new class.
 
@@ -70,7 +72,7 @@ import static frc.robot.subsystems.intake.IntakeConstants.INTAKE_CAN_ID;
 ```
 {% endcode %}
 
-This will import every constant in IntakeConstants.
+By adding a star `*` (asterisk) we can import every constant in IntakeConstants.java.
 
 {% code overflow="wrap" %}
 ```java

@@ -11,7 +11,7 @@ icon: motorcycle
 * [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
-## Add a new class IntakeIOTalonFX to AdvantageKit\_TalonFXSwerveTemplate
+## 1. Add a new class IntakeIOTalonFX
 
 Setting up IntakeIOTalonFX class using IntakeIO interface is the same as setting up IntakeIOSim. Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.
 
@@ -68,7 +68,7 @@ public class IntakeIOTalonFX implements IntakeIO {
 ```
 {% endcode %}
 
-## Add variables
+## 2. Add variables
 
 We add two private variables. VS Code will let you know you need to make some imports for the code to work.
 
@@ -132,21 +132,7 @@ private final int MAX_VOLTAGE = 12;
 
 </details>
 
-## Add class constructor & create objects
-
-<details>
-
-<summary>What is a class constructor?</summary>
-
-A class constructor is a special method that runs once when an object is created from the class.
-
-Every time a new object is created using the class Intake, we call the Intake class constructor once.
-
-The value of the variable `io` inside of `Intake` is set to the value of the parameter `IntakeIO io` we put in while making a new `Intake` object (which is going to be `IntakeIOSim()` or `IntakeIOTalonFX()`).
-
-Later we will be making the Intake object in RobotContainer.java.
-
-</details>
+## 3. Add class constructor & create objects
 
 We add a class constructor to the class.&#x20;
 
@@ -177,6 +163,22 @@ public class IntakeIOTalonFX implements IntakeIO {
   public void setIntakeVoltage(double voltage) {}
 }
 </code></pre>
+
+### Code breakdown #2&#x20;
+
+<details>
+
+<summary>What is a class constructor?</summary>
+
+A class constructor is a special method that runs once when an object is created from the class.
+
+Every time a new object is created using the class Intake, we call the Intake class constructor once.
+
+The value of the variable `io` inside of `Intake` is set to the value of the parameter `IntakeIO io` we put in while making a new `Intake` object (which is going to be `IntakeIOSim()` or `IntakeIOTalonFX()`).
+
+Later we will be making the Intake object in RobotContainer.java.
+
+</details>
 
 We have made some objects for the reference variables to point to. Let's look at this line of code:
 
@@ -279,7 +281,7 @@ public VoltageOut(double 0.0) {
 
 </details>
 
-## Fill in the setIntakeVoltage method
+## 4. Fill in the setIntakeVoltage method
 
 Start with the second method `setIntakeVoltage`.
 
@@ -313,6 +315,8 @@ public class IntakeIOTalonFX implements IntakeIO {
 </strong>  }
 }
 </code></pre>
+
+### Code Breakdown #3
 
 <details>
 
@@ -357,6 +361,8 @@ Using Control + click, we looked inside of the class `VoltageOut` to see that th
 {% hint style="info" %}
 Remember "=" means "is changed to the value of"
 {% endhint %}
+
+Look back at the line we added to `updateInputs()`
 
 {% code overflow="wrap" %}
 ```java
@@ -465,7 +471,7 @@ Yes, you can do this instead but this is making a new object over and over again
 
 We should create a single `VoltageOut` object, update its value, and use that object to change the `TalonFX` object.
 
-## Fill in the updateInputs method
+## 5. Fill in the updateInputs method
 
 We need some imports for the methods we write inside of the method.
 
@@ -584,7 +590,7 @@ inputs.intakePositionRad = radiansValue;
 
 By writing all of this in one line of code we save time figuring out more lines of code AND we create less objects for the computer to make (optimization!)
 
-## Completed IntakeIOTalonFX.java
+## 6. Completed IntakeIOTalonFX.java
 
 {% code overflow="wrap" %}
 ```java

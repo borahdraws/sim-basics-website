@@ -14,7 +14,7 @@ icon: gamepad-modern
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 * [ ] A game controller, ideally the one the driver will use for competitions
 
-## Open RobotContainer.java
+## 1. Open RobotContainer.java
 
 Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.&#x20;
 
@@ -22,7 +22,7 @@ Open src >> main >> java >> frc >> robot. Notice there is a file called RobotCon
 
 Open the RobotContainer and it looks like a big mess.
 
-## Add Intake variable
+## 2. Add Intake variable
 
 The way drive is added gives us a hint on how to add intake.&#x20;
 
@@ -38,7 +38,7 @@ public class RobotContainer {
 // bunch of code down there
 </code></pre>
 
-## Create new Controller variable & object
+## 3. Create new CommandXboxController variable & object
 
 In order to use a controller, we need a controller object created from the game controller class.&#x20;
 
@@ -56,7 +56,7 @@ public class RobotContainer {
 // bunch of code down there
 </code></pre>
 
-## Add intake subsystem to RobotContainer class constructor
+## 4. Add intake subsystem to RobotContainer class constructor
 
 ok this is about to be so much code but I am shrinking stuff and removing comments which makes it much smaller.&#x20;
 
@@ -126,7 +126,7 @@ Let's add our intake to each case (and import with Quick Fix...).
 // bunch of code down there
 </code></pre>
 
-## Button mapping
+## 5. Button mapping
 
 We are going to add our intake button mapping here:
 
@@ -171,11 +171,11 @@ We can also add a default command. If our subsystem code had `run()` instead of 
 </strong>}
 </code></pre>
 
-## Run the Simulation
+## 6. Run the Simulation
 
 If everything was written right the sim will be running first try. If not, congrats you've encountered the first of countless failures welcome to programming this is fun promise 🙃
 
-If you need a more detailed walkthrough of the summary below you can go back to the sim lesson.
+If you need a more detailed walkthrough of the summary below you can go [back to the sim lesson](../).
 
 Plug in your game controller. It is helpful to make sure the game controller works first by opening an online gamepad tester.
 

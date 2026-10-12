@@ -1,5 +1,5 @@
 ---
-description: Also good idea for anyone interested in being a robot driver
+description: Also a good idea for anyone interested in being a robot driver
 icon: computer-mouse
 ---
 

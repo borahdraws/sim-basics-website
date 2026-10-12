@@ -15,6 +15,13 @@
 * [Create IntakeConstants](2026-make-an-intake-subsystem/create-intakeconstants.md)
 * [Create Button Mapping in RobotContainer.java](2026-make-an-intake-subsystem/create-button-mapping-in-robotcontainer.java.md)
 * [Fix auto formatting](2026-make-an-intake-subsystem/fix-auto-formatting.md)
-* [8bitdo Ultimate 2C Controller never ending grief](2026-make-an-intake-subsystem/8bitdo-ultimate-2c-controller-never-ending-grief.md)
+* [😩 8bitdo Ultimate 2C Controller never ending grief](2026-make-an-intake-subsystem/8bitdo-ultimate-2c-controller-never-ending-grief.md)
 
-## 2026 MAKE AN ARM SUBSYSTEM
+## 2026 MAKE AN ELEVATOR SUBSYSTEM
+
+***
+
+* [Create ElevatorIO](create-elevatorio.md)
+* [Create ElevatorIOSim](create-elevatoriosim.md)
+* [Create Elevator](create-elevator.md)
+* [Page 1](page-1.md)
