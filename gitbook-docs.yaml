@@ -7,7 +7,6 @@ site:
       title: Home
       path: home
       icon: house
-      default: true
       children:
         - type: space
           key: space-1
@@ -22,6 +21,7 @@ site:
       path: commands-v2
       description: ""
       icon: comet
+      default: true
       children:
         - type: space
           key: space-3
