@@ -20,10 +20,12 @@ site:
       key: section-3
       title: Commands V2
       path: commands-v2
+      description: ""
+      icon: comet
       children:
         - type: space
           key: space-3
-          title: Product Docs
+          title: Commands V2
           path: product-docs
           default: true
           draft: true
