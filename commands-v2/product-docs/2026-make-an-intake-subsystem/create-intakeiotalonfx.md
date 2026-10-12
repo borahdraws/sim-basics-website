@@ -8,7 +8,6 @@ icon: motorcycle
 ## What you'll need
 
 * [ ] A computer with WPILib installed
-* [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
 ## 1. Add a new class IntakeIOTalonFX

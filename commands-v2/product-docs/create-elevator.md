@@ -163,19 +163,19 @@ PID is a smart control system that determines how much power to send a motor.
 
 {% columns %}
 {% column %}
-**Best PID**
+**✅ Best PID**
 
 Snaps smoothly to target without overshoot
 {% endcolumn %}
 
 {% column %}
-**Bad PID**
+**❌ Bad PID**
 
 Super sluggish to get to target
 {% endcolumn %}
 
 {% column %}
-**Bad PID**
+**❌ Bad PID**
 
 Bounces back and forth to get to target
 {% endcolumn %}
@@ -193,7 +193,7 @@ Mechanism2d helps us create a simple visualization of a robot's moving parts.
 {% column width="66.66666666666666%" %}
 #### Mechanism2d Container
 
-Set width and height of the 'canvas' or 'viewport'. The dimensions of the canvas are unitless but often treated as meters.
+Set width and height of the 'canvas' or 'viewport' we see the lines in. The dimensions of the canvas are unitless but often treated as meters.
 
 {% code overflow="wrap" %}
 ```

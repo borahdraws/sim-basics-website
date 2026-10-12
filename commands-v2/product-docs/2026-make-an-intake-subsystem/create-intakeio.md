@@ -8,7 +8,6 @@ icon: utensils
 ## What you'll need
 
 * [ ] A computer with WPILib installed
-* [x] Internet connection
 * [ ] The previously downloaded AdvantageKit\_TalonFXSwerveTemplate robot code
 
 ## 1. What are we doing?

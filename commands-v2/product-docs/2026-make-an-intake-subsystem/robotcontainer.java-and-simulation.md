@@ -5,12 +5,11 @@ description: >-
 icon: gamepad-modern
 ---
 
-# Create Button Mapping in RobotContainer.java
+# RobotContainer.java & Simulation!
 
 ## What you'll need
 
 * [ ] A computer with WPILib installed
-* [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 * [ ] A game controller, ideally the one the driver will use for competitions
 
@@ -193,7 +192,18 @@ Go to AdvantageScope. Go to File >> Connect to Simulator >> Default: NetworkTabl
 
 Click the plus to add 📉 Line Graph.
 
-In the left column of AdvantageScope click the triangles to open up AdvantageKit >> Intake. Click and drag IntakeAppliedVoltage to the box in the bottom area labeled Left Axis.
+In the left column of AdvantageScope click the triangles to open up AdvantageKit >> Intake. Do the four values inside look familiar? These are the four variables we created inside of the static nested class `IntakeIOInputs`:
+
+```java
+public static class IntakeIOInputs {
+  public double intakePositionRadians = 0.0;
+  public double intakeVelocityRadiansPerSeconds = 0.0;
+  public double intakeAppliedVoltage = 0.0;
+  public double intakeCurrentAmperage = 0.0;
+}
+```
+
+Now these four values are in AdvantageScope for us to look at. Click and drag IntakeAppliedVoltage to the box in the bottom area labeled Left Axis.
 
 Go back to the Robot Simulation window. Click on Teleoperated to change the Robot State from Disconnected to Teleoperated.
 

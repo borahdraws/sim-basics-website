@@ -18,7 +18,6 @@ We can set up some variables that can be used by any files in the robot's code.
 ## What you'll need
 
 * [ ] A computer with WPILib installed
-* [x] Internet connection
 * [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 
 ## 1. Create new class IntakeConstants

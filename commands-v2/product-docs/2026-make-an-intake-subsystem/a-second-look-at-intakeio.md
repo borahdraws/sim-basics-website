@@ -14,8 +14,7 @@ This page is a quick "let's make sure you really understand what we have introdu
 ## What you'll need
 
 * [ ] A computer with WPILib installed
-* [x] Internet connection
-* [ ] The previously downloaded AdvantageKit\_TalonFXSwerveTemplate robot code
+* [ ] The modified AdvantageKit\_TalonFXSwerveTemplate robot code
 * [ ] The previously downloaded AdvantageKit\_KitBot2026Template robot code
 
 <details>
