@@ -21,7 +21,7 @@ Important: Learn how to use Onshape/the cad software the team is using so that y
 
 Pretend this is the sketch of the cad of your robot with the information needed to program the elevator:
 
-
+\*\*\*placeholder
 
 Talk with the drivers/gunners and figure out how they want to control the robot. Let's make this the goal for the elevator:
 

@@ -26,7 +26,7 @@ Go to [docs.advantagekit.org](http://docs.advantagekit.org) and find the link to
 
 In the rightmost column, scroll down to find Releases and click on the latest release. Under Assets, download and extract AdvantageKit\_KitBot2026Template.zip.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 Open WPILib VS Code and open the AdvantageKit\_KitBot2026Template folder.
 
@@ -48,7 +48,7 @@ VS Code will condense the folders to look like src / main >> java / frc / robot 
 
 There are two subsystems in this kitbot code:
 
-<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td align="center">Drive</td><td>The drivetrain subsystem that lets the robot move around</td><td data-object-fit="contain"><a href="../.gitbook/assets/image (5).png">image (5).png</a></td></tr><tr><td align="center">Superstructure</td><td><p>The subsystem that lets the robot eject, intake, and launch balls.</p><p></p><p>The Superstructure has two motors, the intake motor and the feeder (shooter) motor.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (6).png">image (6).png</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td align="center">Drive</td><td>The drivetrain subsystem that lets the robot move around</td><td data-object-fit="contain"><a href="../.gitbook/assets/image (5).png">image (5).png</a></td></tr><tr><td align="center">Superstructure</td><td><p>The subsystem that lets the robot eject, intake, and launch balls.</p><p>The Superstructure has two motors, the intake motor and the feeder (shooter) motor.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (6).png">image (6).png</a></td></tr></tbody></table>
 
 ## 2. AdvantageKit Structure
 
@@ -56,7 +56,7 @@ Look inside both the drive and superstructure folders. Both subsystems have at l
 
 <figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>SuperstructureConstants.java is something that makes the code more complicated but saves lots of time later, we will look at it later</p></figcaption></figure>
 
-<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td align="center"><strong>SubsystemIOSim.java</strong></td><td>The SIM file lets us control a <strong>sim</strong>ulated, virtual version of the motors on a virtual robot. </td><td data-object-fit="contain"><a href="../.gitbook/assets/image.png">image.png</a></td></tr><tr><td align="center"><strong>SubsystemIOTalonFX.java</strong></td><td><p>The REAL file lets us control the real motors on a real robot. In this case, the motors are TalonFXs.</p><p></p><p>The kitbot template also contains SuperstructureIOSpark and SuperstructureIOTalonSRX, so instead of TalonFX motors you might use Spark motors or TalonSRX motors.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (1).png">image (1).png</a></td></tr><tr><td align="center"><strong>SubsystemIO.java</strong></td><td><p>IO stands for Input Output. Start here when making a new subsystem.  </p><p></p><p>The IO file acts like a template to help set up the SIM and REAL files. Because we use this IO template, we can make sure that the SIM and REAL robot have the same motors and can be controlled with the same code.</p><p></p><p>Just as important, this IO file contains a box called SubsystemIOInputs that records data. Regardless of whether we drove the SIM robot or REAL robot we can replay the data (and see what went wrong 💀)</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (3).png">image (3).png</a></td></tr><tr><td align="center"><strong>Subsystem.java</strong></td><td><p>You might see this with Subsystem after the hardware name (Intake.java might be called IntakeSubsystem.java)</p><p></p><p>This is the file where we define what we want the subsystem to do based on the code in the IO files.</p><p></p><p>In this kitbot, the intake motor and the feeder (shooter) motor must always work together to keep balls from getting stuck, which is why the motors were coded together in one Superstructure subsystem.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (2).png">image (2).png</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td align="center"><strong>SubsystemIOSim.java</strong></td><td>The SIM file lets us control a <strong>sim</strong>ulated, virtual version of the motors on a virtual robot.</td><td data-object-fit="contain"><a href="../.gitbook/assets/image.png">image.png</a></td></tr><tr><td align="center"><strong>SubsystemIOTalonFX.java</strong></td><td><p>The REAL file lets us control the real motors on a real robot. In this case, the motors are TalonFXs.</p><p>The kitbot template also contains SuperstructureIOSpark and SuperstructureIOTalonSRX, so instead of TalonFX motors you might use Spark motors or TalonSRX motors.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (1).png">image (1).png</a></td></tr><tr><td align="center"><strong>SubsystemIO.java</strong></td><td><p>IO stands for Input Output. Start here when making a new subsystem.</p><p>The IO file acts like a template to help set up the SIM and REAL files. Because we use this IO template, we can make sure that the SIM and REAL robot have the same motors and can be controlled with the same code.</p><p>Just as important, this IO file contains a box called SubsystemIOInputs that records data. Regardless of whether we drove the SIM robot or REAL robot we can replay the data (and see what went wrong 💀)</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (3).png">image (3).png</a></td></tr><tr><td align="center"><strong>Subsystem.java</strong></td><td><p>You might see this with Subsystem after the hardware name (Intake.java might be called IntakeSubsystem.java)</p><p>This is the file where we define what we want the subsystem to do based on the code in the IO files.</p><p>In this kitbot, the intake motor and the feeder (shooter) motor must always work together to keep balls from getting stuck, which is why the motors were coded together in one Superstructure subsystem.</p></td><td data-object-fit="contain"><a href="../.gitbook/assets/image (2).png">image (2).png</a></td></tr></tbody></table>
 
 ## 3. Why is the robot code designed this way?
 
@@ -81,7 +81,7 @@ Add some game controller button mapping to the actions we created in Subsystem.j
 {% endstep %}
 
 {% step %}
-#### Our goal is to press that same button, but instead of spinning a virtual motor, we spin a real motor.&#x20;
+#### Our goal is to press that same button, but instead of spinning a virtual motor, we spin a real motor.
 
 Make a SubsystemIOReal.java that implements SubsystemIO. SubsystemIOReal can control the real life subsystem hardware.
 
@@ -111,7 +111,7 @@ Put SubsystemIOReal into Subsystem
 
 ### Another reason to structure the code using AdvantageKit:
 
-What if the team decides "hey we can't use Krakens (TalonFX) anymore we need to swap to NEOs (SparkMax)"&#x20;
+What if the team decides "hey we can't use Krakens (TalonFX) anymore we need to swap to NEOs (SparkMax)"
 
 We want code files to know as little about each other as possible (this is called **decoupling**)
 
@@ -121,7 +121,7 @@ We want code files to know as little about each other as possible (this is calle
 
 We are able to swap out the motor type in SubsystemIOReal.java without needing to change a line of code in Subsystem.java. That's much less work and less chance to make errors 🥳
 
-This concept is called **dependency injection**.&#x20;
+This concept is called **dependency injection**.
 
 ### Recap of dependency injection:
 

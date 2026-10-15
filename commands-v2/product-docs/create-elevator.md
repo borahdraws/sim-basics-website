@@ -37,11 +37,95 @@ public class Elevator extends SubsystemBase {
 ```
 {% endcode %}
 
-## Create an enum Goal
+## Create an enum named Goal
 
-{% code overflow="wrap" %}
-```java
-// Copyright (c) FIRST and other WPILib contributors.
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot.subsystems.elevator;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class Elevator extends SubsystemBase {
+<strong>    public enum Goal {
+</strong><strong>      LOWEST(
+</strong><strong>        0.0
+</strong><strong>      ),
+</strong><strong>      HIGHEST(
+</strong><strong>        Units.inchesToMeters(14.0)
+</strong><strong>      );
+</strong><strong>
+</strong><strong>      final double elevatorCarriageTargetHeightMeters;
+</strong><strong>
+</strong><strong>      Goal(double elevatorHeightMeters) {
+</strong><strong>      this.elevatorCarriageTargetHeightMeters = elevatorHeightMeters;
+</strong><strong>    }
+</strong><strong>  }
+</strong>
+  /** Creates a new Elevator. */
+  public Elevator() {}
+
+  @Override
+  public void periodic() {}
+}
+</code></pre>
+
+### Code breakdown #1
+
+<details>
+
+<summary>What is an enum?</summary>
+
+We can use an `enum` (short for enumerator) to make a set of values with a special name.
+
+Our enum is pretty simple for now, each set only has one measurement to keep track of (height), and there are two sets: LOWEST and HIGHEST.
+
+But what if we had an elevator connected to an arm, and the arm needs to always be at a certain angle depending on the elevator height?
+
+Or what if we want to introduce more heights like "SHELF\_1" and "SHELF\_2"?
+
+By using an enum, we ensure that LOWEST always has a measurement of 0.0. Each set always has its own specific data, and we can't use any data other than the sets we have created.
+
+</details>
+
+<details>
+
+<summary>What are the components of an enum?</summary>
+
+{% stepper %}
+{% step %}
+#### Constants
+
+The 'sets' that we create with descriptive names. This must be first
+
+
+{% endstep %}
+
+{% step %}
+#### Fields
+
+The variables that go inside the sets
+
+
+{% endstep %}
+
+{% step %}
+#### Constructor
+
+This is how we create a set
+
+
+{% endstep %}
+{% endstepper %}
+
+</details>
+
+## Add more variables
+
+Create an interface variable and autologged variable & object. We are going to also create a variable to hold the enum we just made and set it to a default value.
+
+<pre class="language-java" data-overflow="wrap"><code class="lang-java">// Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
@@ -65,30 +149,29 @@ public class Elevator extends SubsystemBase {
     }
   }
 
+<strong>  private final ElevatorIO io;
+</strong><strong>  private final ElevatorIOInputsAutoLogged inputs = new ElevatorIOInputsAutoLogged();
+</strong><strong>  private Goal goal = Goal.LOWEST;
+</strong>  
   /** Creates a new Elevator. */
   public Elevator() {}
 
   @Override
   public void periodic() {}
 }
-```
-{% endcode %}
+</code></pre>
 
-Code breakdown
+## Create a ProfiledPIDController
 
-<details>
+### What is PID?
 
-<summary>What is an enum?</summary>
+Let's say our elevator is at the lowest position and we want the elevator to go to the highest position. In an ideal world we would put 100% power to the elevator and then stop it the moment it's reached the top.
 
-enum (short for enumerator)&#x20;
+The reality is that you're probably going to blast the elevator off the robot trying to go from 0 to 100% power. The elevator will way overshoot its target height.
 
+PID is a smart control system that determines how much power to send a motor based on the data it receives.
 
-
-</details>
-
-## More variables
-
-Create interface variable and autologged variable & object
+### Add ProfiledPIDController to Elevator
 
 {% code overflow="wrap" %}
 ```java
@@ -120,6 +203,17 @@ public class Elevator extends SubsystemBase {
   private final ElevatorIOInputsAutoLogged inputs = new ElevatorIOInputsAutoLogged();
   private Goal goal = Goal.LOWEST;
   
+  private final ProfiledPIDController elevatorPID =
+    new ProfiledPIDController(
+      5.0, 
+      0.0, 
+      0.2, 
+      new TrapezoidProfile.Constraints(
+        8.0,
+        6.0
+      )
+    );
+  
   /** Creates a new Elevator. */
   public Elevator() {}
 
@@ -129,15 +223,11 @@ public class Elevator extends SubsystemBase {
 ```
 {% endcode %}
 
-## Create a ProfiledPIDController
+### ProfiledPIDController needs four parameters:
 
-### What is PID?
-
-Let's say our elevator is at the lowest position and we want the elevator to go to the highest position. In an ideal world we would put 100% power to the elevator and then stop it the moment it's reached the top.
-
-The reality is that you're probably going to blast the elevator off the robot trying to go from 0 to 100% power. The elevator will way overshoot its target height.
-
-PID is a smart control system that determines how much power to send a motor.
+{% stepper %}
+{% step %}
+#### `double Kp`
 
 #### P (Proportional)
 
@@ -146,20 +236,50 @@ PID is a smart control system that determines how much power to send a motor.
 * For FRC, P is around:
   * 2.0 \~ 5.0 radians input
   * 0.03 - 0.08 degrees input
+{% endstep %}
+
+{% step %}
+#### `double Ki`
 
 #### I (Integral)
 
 * _I still haven't reached my target and how much time has gone by?_
 * I pushes you more as more time goes by without you reaching the target.
 * For FRC, usually we leave this at 0.0
+{% endstep %}
+
+{% step %}
+#### `double Kd`
 
 #### D (Derivative)
 
 * _How fast am I approaching my target?_
-* D looks at velocity, not distance, and puts on the brakes to slow you to a smooth stop at the target.&#x20;
+* D looks at velocity, not distance, and puts on the brakes to slow you to a smooth stop at the target.
 * For FRC, I is around:
   * 0.05 to 0.2 radians input
   * 0.001 to 0.005 degrees input
+{% endstep %}
+
+{% step %}
+#### `TrapezoidProfile.Constraints constraints`
+
+Helps smooth the PID movement. `TrapezoidProfile.Constraints` needs two parameters:
+
+{% stepper %}
+{% step %}
+#### `double maxVelocity`
+
+
+{% endstep %}
+
+{% step %}
+#### `double maxAcceleration`
+
+
+{% endstep %}
+{% endstepper %}
+{% endstep %}
+{% endstepper %}
 
 {% columns %}
 {% column %}
@@ -180,6 +300,44 @@ Super sluggish to get to target
 Bounces back and forth to get to target
 {% endcolumn %}
 {% endcolumns %}
+
+## Add FeedForward
+
+### What is Feedforward control?
+
+PID determines how much power to send to a motor as a reaction, which means it is already behind.&#x20;
+
+Feedforward control allows us to calculate the input we want beforehand so that PID has to do less work. WPILib has a few feedforward classes for us to use. We will be using the class ElevatorFeedforward.
+
+### Add ElevatorFeedforward to Elevator
+
+### ElevatorFeedforward needs four parameters:
+
+{% stepper %}
+{% step %}
+#### `double ks`
+
+
+{% endstep %}
+
+{% step %}
+#### `double kg`
+
+
+{% endstep %}
+
+{% step %}
+### `double kv`
+
+
+{% endstep %}
+
+{% step %}
+### `double ka`
+
+
+{% endstep %}
+{% endstepper %}
 
 ## Add Mechanism2d
 
@@ -203,7 +361,7 @@ Set width and height of the 'canvas' or 'viewport' we see the lines in. The dime
 {% endcolumn %}
 
 {% column width="33.33333333333334%" %}
-
+wow! a blank box!
 {% endcolumn %}
 {% endcolumns %}
 
@@ -223,7 +381,7 @@ In this example we have 2.5, 2.5 so the root is at the center of the canvas (Mec
 {% endcolumn %}
 
 {% column width="33.33333333333334%" %}
-
+you can't see the dot it but it's there
 {% endcolumn %}
 {% endcolumns %}
 
@@ -242,13 +400,21 @@ The line that extends from the root. Can be used to visualize elevators, arms, t
 {% endcolumn %}
 
 {% column width="33.33333333333334%" %}
-
+a line!!
 {% endcolumn %}
 {% endcolumns %}
 
+
+
+I want one line to represent the elevator base, then one line to represent the moving elevator carriage. That will help us see if the elevator carriage is moving too far above the elevator base.
+
+Then I think I will have one more line coming out sideways from the carriage to represent the rollers of the intake system. It will be helpful in the sim to see if the elevator intake is bumping into things or not.
+
+
+
+
+
 List of colors bc why not
-
-
 
 <details>
 

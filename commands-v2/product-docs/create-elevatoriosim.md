@@ -111,6 +111,10 @@ In this example, we use Units to convert the estimated elevator weight from lbs 
 
 "The radius of the drum that the elevator spool is wrapped around."
 
+Refer back to our robot sketch:
+
+\*\*\* placeholder
+
 In this example, we use Units to convert the measurement from inches to meters.
 {% endstep %}
 
@@ -195,14 +199,15 @@ public class ElevatorIOSim implements ElevatorIO {
 
 This line of code steps the physics model forward by 20ms:
 
-<pre class="language-java"><code class="lang-java"><strong>elevatorSim.update(0.02);
-</strong></code></pre>
+```java
+elevatorSim.update(0.02);
+```
 
 The AdvantageKit inputs should come directly from the simulation values.
 
 We get the variable `elevatorPositionMeters` from `inputs` (which is the static class `elevatorIOInputs`.)
 
-`elevatorSim` is the object we made from `ElevatorSim`. Control + click on `ElevatorSim` to see the methods inside of it.&#x20;
+`elevatorSim` is the object we made from `ElevatorSim`. Control + click on `ElevatorSim` to see the methods inside of it.
 
 One of the methods we can use is `getPositionMeters()` which will get the elevator position in meters.
 

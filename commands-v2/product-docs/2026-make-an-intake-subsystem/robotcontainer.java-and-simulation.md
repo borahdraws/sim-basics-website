@@ -15,7 +15,7 @@ icon: gamepad-modern
 
 ## 1. Open RobotContainer.java
 
-Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.&#x20;
+Open WPILib VS Code and open AdvantageKit\_TalonFXSwerveTemplate.
 
 Open src >> main >> java >> frc >> robot. Notice there is a file called RobotContainer.java.
 
@@ -23,7 +23,7 @@ Open the RobotContainer and it looks like a big mess.
 
 ## 2. Add Intake variable
 
-The way drive is added gives us a hint on how to add intake.&#x20;
+The way drive is added gives us a hint on how to add intake.
 
 At the very top you will see that a `Drive` variable already exists for the `drive` subsystem. We add a variable for our `intake` right next to it (import `Intake` with Quick Fix...)
 
@@ -39,7 +39,7 @@ public class RobotContainer {
 
 ## 3. Create new CommandXboxController variable & object
 
-In order to use a controller, we need a controller object created from the game controller class.&#x20;
+In order to use a controller, we need a controller object created from the game controller class.
 
 Create a second controller variable below the one in the template. We will assign it to a new object we create:
 
@@ -57,7 +57,7 @@ public class RobotContainer {
 
 ## 4. Add intake subsystem to RobotContainer class constructor
 
-ok this is about to be so much code but I am shrinking stuff and removing comments which makes it much smaller.&#x20;
+ok this is about to be so much code but I am shrinking stuff and removing comments which makes it much smaller.
 
 {% code overflow="wrap" %}
 ```java
@@ -141,7 +141,7 @@ How do we know what to write for each button? You need to look in the documentat
 
 Go to https://docs.wpilib.org/, then look for API Documentation for Java. Documentation is sort of like a dictionary (anyone still using those?) to learn what we can put into our code.
 
-Find and click on **edu.wpi.first.wpilibj2.command.button**.&#x20;
+Find and click on **edu.wpi.first.wpilibj2.command.button**.
 
 There are lots of different controllers! Open **CommandXboxController**. We can see a list of all the different buttons we can use.
 
@@ -174,11 +174,11 @@ We can also add a default command. If our subsystem code had `run()` instead of 
 
 If everything was written right the sim will be running first try. If not, congrats you've encountered the first of countless failures welcome to programming this is fun promise 🙃
 
-If you need a more detailed walkthrough of the summary below you can go [back to the sim lesson](../).
+If you need a more detailed walkthrough of the summary below you can go [back to the sim lesson](<../README (1).md>).
 
 Plug in your game controller. It is helpful to make sure the game controller works first by opening an online gamepad tester.
 
-Click the **Open WPILib Command Palette** icon in the top right, and type in **Simulate Robot Code**. Once the code is done compiling, the Command Center will prompt you again. Check the box next to **Sim GUI**, then choose **OK**.&#x20;
+Click the **Open WPILib Command Palette** icon in the top right, and type in **Simulate Robot Code**. Once the code is done compiling, the Command Center will prompt you again. Check the box next to **Sim GUI**, then choose **OK**.
 
 Click and drag the name of your controller from System Joysticks to Joystick\[1].
 
@@ -188,7 +188,7 @@ Click the **Open WPILib Command Palette** icon again, and type **Start Tool**. T
 Remember the sim only works when Robot State is Teleoparated AND Robot Simulation is the active, selected window. NOT AdvantageScope
 {% endhint %}
 
-Go to AdvantageScope. Go to File >> Connect to Simulator >> Default: NetworkTables 4.&#x20;
+Go to AdvantageScope. Go to File >> Connect to Simulator >> Default: NetworkTables 4.
 
 Click the plus to add 📉 Line Graph.
 

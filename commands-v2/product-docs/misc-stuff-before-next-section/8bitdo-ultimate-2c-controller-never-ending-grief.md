@@ -1,8 +1,9 @@
 ---
 description: This controller gives me never ending grief
+icon: face-angry
 ---
 
-# 😩 8bitdo Ultimate 2C Controller never ending grief
+# 8bitdo Ultimate 2C Controller never ending grief
 
 ## Bluetooth
 
